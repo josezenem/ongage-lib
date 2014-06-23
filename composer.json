@@ -14,7 +14,7 @@
         "guzzlehttp/guzzle": "~4.0"
     },
     "autoload": {
-        "psr-4": {"PhpAmqpLib": ""}
+        "psr-4": {"RfgOngage": ""}
     },
     "license": "LGPL-2.1"
 }
