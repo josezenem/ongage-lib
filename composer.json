@@ -14,8 +14,8 @@
         "guzzlehttp/guzzle": "~4.0"
     },
     "autoload": {
-        "psr-0": {
-            "RfgOngage": "src"
+        "psr-4": {
+            "RfgOngage\\": "src/"
         }
     },
     "license": "LGPL-2.1"
