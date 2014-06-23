@@ -1,5 +1,5 @@
 {
-    "name": "rfg/ongage",
+    "name": "rfg/ongage-lib",
     "type": "library",
     "description": "This library is an implementation of the Ongage API.",
     "keywords": ["ongage", "esp", "email", "edm"],
