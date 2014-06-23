@@ -1,5 +1,6 @@
 <?php
 namespace RfgOngage;
+use GuzzleHttp;
 
 class Ongage
 {

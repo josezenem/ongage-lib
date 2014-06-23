@@ -1,5 +1,5 @@
 <?php
-namespace RfgOngage\List;
+namespace RfgOngage\Lists;
 
 class Segments
 {
