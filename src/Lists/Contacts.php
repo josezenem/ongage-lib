@@ -4,9 +4,6 @@ namespace RfgOngage\Lists;
 class Contacts
 {
 
-    /**
-     * @const BASE_ENDPOINT Endpoint name
-     */
     public $base_endpoint = '/contacts';
 
     public $contentType = 'application/json';
@@ -154,7 +151,8 @@ class Contacts
      * Change contact status based on email and list
      *
      * @param string $list_id            
-     * @param string $change_to            Possible values - 'resubscribe', 'unsubscribe', 'remove', 'bounce', 'complaint', 'soft_bounce'
+     * @param string $change_to
+     *            Possible values - 'resubscribe', 'unsubscribe', 'remove', 'bounce', 'complaint', 'soft_bounce'
      * @param string|array $emails            
      * @param string $mailing_id            
      */
@@ -177,38 +175,35 @@ class Contacts
      * Function lookup()
      * Contact search function
      *
-     * Valid values for $user_type as follows:
-     *
-     * 'all' - All users
-     * 'active' - Active users
-     * 'nonactive' - Inactive users
-     * 'unsubscribed' - Unsubscribed users
-     * 'bounced' - Bounced users
-     * 'complaint' - Complained users
-     *
-     * Valid "operator" values for the $criteria array are as follows:
-     *
-     * '=' - Equal to / on date
-     * '<' - Less than / before date
-     * '>' - More than / after date
-     * '<=' - Less than or equal to / Before or on date
-     * '>=' - More than or equal to / On or after date
-     * '!=' - Not equal to / Not on
-     * '><' - in range
-     * 'empty' - is empty
-     * 'notempty' - is not empty
-     * 'LIKE' - Contains value
-     * 'NOT LIKE' - Does not contain value
-     * 'LIKE_' - Begins with value
-     * '_LIKE' - Ends with value
-     *
-     * @param string $user_type            
+     * @param string $user_type
+     *            Valid values for $user_type as follows:
+     *            'all' - All users
+     *            'active' - Active users
+     *            'nonactive' - Inactive users
+     *            'unsubscribed' - Unsubscribed users
+     *            'bounced' - Bounced users
+     *            'complaint' - Complained users
      * @param string $offset            
      * @param string $limit            
      * @param string $list_id            
      * @param array $sort            
      * @param array $criteria
-     *            array of arrays containing field criteria and operators
+     *            Array of arrays containing field criteria and operators.
+     *            
+     *            Valid "operator" values for the $criteria array are as follows:
+     *            '=' - Equal to / on date
+     *            '<' - Less than / before date
+     *            '>' - More than / after date
+     *            '<=' - Less than or equal to / Before or on date
+     *            '>=' - More than or equal to / On or after date
+     *            '!=' - Not equal to / Not on
+     *            '><' - in range
+     *            'empty' - is empty
+     *            'notempty' - is not empty
+     *            'LIKE' - Contains value
+     *            'NOT LIKE' - Does not contain value
+     *            'LIKE_' - Begins with value
+     *            '_LIKE' - Ends with value
      * @link http://apidocs.ongage.net/class-Controller_API_Contacts.html
      */
     public function lookup($user_type = null, $offset = null, $limit = null, $list_id = null, $sort = array(), $criteria = array())
