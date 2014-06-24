@@ -30,6 +30,7 @@ class Contacts
         $this->request_type = 'GET';
         $this->body = '';
         $query = array();
+        
         if (! empty($list_id)) {
             $this->query['list_id'] = (int) $list_id;
         }
@@ -56,6 +57,7 @@ class Contacts
         $this->request_type = 'POST';
         $this->body = '';
         $query = array();
+        
         if (is_array($email_or_array)) {
             $parameters = array();
             foreach ($email_or_array as $i => $contact) {
@@ -133,6 +135,7 @@ class Contacts
         $this->method = '/delete';
         $this->request_type = 'POST';
         $this->body = '';
+        $query = array();
         
         if (is_array($contact_ids)) {
             $parameters = array(
@@ -161,6 +164,7 @@ class Contacts
         $this->method = '/remove';
         $this->request_type = 'POST';
         $this->body = '';
+        $query = array();
         
         $parameters = array(
             'list_id' => $list_id,
