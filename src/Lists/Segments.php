@@ -34,7 +34,7 @@ class Segments
         }
         $this->request_type = 'GET';
         $this->body = '';
-        $query = array();
+        $this->query = array();
         if (! empty($list_id)) {
             $this->query['list_id'] = (int) $list_id;
         }
@@ -79,7 +79,7 @@ class Segments
         $this->method = '';
         $this->request_type = 'POST';
         $this->body = '';
-        $query = array();
+        $this->query = array();
         
         $parameters = array(
             'list_id' => (int) $list_id,
@@ -134,7 +134,7 @@ class Segments
         $this->method = '/export';
         $this->request_type = 'POST';
         $this->body = '';
-        $query = array();
+        $this->query = array();
         
         $parameters = array(
             'list_id' => (int) $list_id,
@@ -161,7 +161,7 @@ class Segments
         $this->method = '/' . (int) $export_id . '/export_retrieve';
         $this->request_type = 'GET';
         $this->body = '';
-        $query = array();
+        $this->query = array();
     }
 }
 ?>

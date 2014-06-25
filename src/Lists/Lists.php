@@ -38,7 +38,7 @@ class Lists
         $this->method = '';
         $this->request_type = 'GET';
         $this->body = '';
-        $query = array();
+        $this->query = array();
         if (! empty($name)) {
             $this->query['name'] = $name;
         }
@@ -61,17 +61,17 @@ class Lists
 
     /**
      * Function getById()
-     * Gets a list of segments
+     * Gets a single list
      *
      * @param string $list_id
-     *            List Id for segments
+     *            Id for list
      */
     public function getById($list_id)
     {
         $this->method = '/' . (int) $list_id;
         $this->request_type = 'GET';
         $this->body = '';
-        $query = array();
+        $this->query = array();
     }
 
     /**
@@ -79,9 +79,9 @@ class Lists
      * Creates a list
      *
      * @param string $name
-     *            Segment name (Required)
+     *            List name (Required)
      * @param string $type
-     *            Segment Type ( "supression", "sending" )
+     *            List Type ( "supression", "sending" )
      * @param string $description
      *            List description
      * @param boolean $create_segment
@@ -98,7 +98,7 @@ class Lists
         $this->method = '';
         $this->request_type = 'POST';
         $this->body = '';
-        $query = array();
+        $this->query = array();
         
         $parameters = array(
             'name' => $name,
@@ -135,7 +135,7 @@ class Lists
         $this->method = '/' . (int) $list_id;
         $this->request_type = 'PUT';
         $this->body = '';
-        $query = array();
+        $this->query = array();
         
         $parameters = array(
             'name' => $name,
@@ -161,7 +161,7 @@ class Lists
         $this->method = '/' . $list_id;
         $this->request_type = 'DELETE';
         $this->body = '';
-        $query = array();
+        $this->query = array();
     }
 
     /**
@@ -176,7 +176,7 @@ class Lists
         $this->method = '/' . $list_id . '/delete_implications';
         $this->request_type = 'GET';
         $this->body = '';
-        $query = array();
+        $this->query = array();
     }
 }
 ?>
