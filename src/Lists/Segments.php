@@ -38,6 +38,7 @@ class Segments
         if (! empty($list_id)) {
             $this->query['list_id'] = (int) $list_id;
         }
+        return $this;
     }
 
     /**
@@ -91,6 +92,7 @@ class Segments
         );
         
         $this->body = json_encode($parameters);
+        return $this;
     }
 
     /**
@@ -147,6 +149,7 @@ class Segments
             'status' => $status
         );
         $this->body = json_encode($parameters);
+        return $this;
     }
 
     /**
@@ -162,6 +165,7 @@ class Segments
         $this->request_type = 'GET';
         $this->body = '';
         $this->query = array();
+        return $this;
     }
 }
 ?>

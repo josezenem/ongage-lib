@@ -138,6 +138,6 @@ class Reports
             $parameters['format'] = $format;
         }
         $this->body = json_encode($parameters);
-        print $this->body;
+        return $this;
     }
 }

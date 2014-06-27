@@ -57,6 +57,7 @@ class Lists
         if (! empty($limit)) {
             $this->query['limit'] = (int) $limit;
         }
+        return $this;
     }
 
     /**
@@ -72,6 +73,7 @@ class Lists
         $this->request_type = 'GET';
         $this->body = '';
         $this->query = array();
+        return $this;
     }
 
     /**
@@ -111,6 +113,7 @@ class Lists
         );
         
         $this->body = json_encode($parameters);
+        return $this;
     }
 
     /**
@@ -147,6 +150,7 @@ class Lists
         );
         
         $this->body = json_encode($parameters);
+        return $this;
     }
 
     /**
@@ -162,6 +166,7 @@ class Lists
         $this->request_type = 'DELETE';
         $this->body = '';
         $this->query = array();
+        return $this;
     }
 
     /**
@@ -177,6 +182,7 @@ class Lists
         $this->request_type = 'GET';
         $this->body = '';
         $this->query = array();
+        return $this;
     }
 }
 ?>

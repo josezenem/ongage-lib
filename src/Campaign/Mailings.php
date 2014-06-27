@@ -74,6 +74,7 @@ class Mailings
         if (! empty($list_id)) {
             $this->query['list_id'] = (int) $list_id;
         }
+        return $this;
     }
 
     /**
@@ -180,6 +181,7 @@ class Mailings
         );
         
         $this->body = json_encode($parameters);
+        return $this;
     }
 
     /**
@@ -216,6 +218,7 @@ class Mailings
             $parameters['favorite'] = (int) $favorite;
         }
         $this->body = json_encode($parameters);
+        return $this;
     }
 
     /**
@@ -289,6 +292,7 @@ class Mailings
             $parameters['distribution'] = $distribution;
         }
         $this->body = json_encode($parameters);
+        return $this;
     }
 
     /**
@@ -304,6 +308,7 @@ class Mailings
         $this->request_type = 'PUT';
         $this->body = '';
         $this->query = array();
+        return $this;
     }
 
     /**
@@ -319,6 +324,7 @@ class Mailings
         $this->request_type = 'PUT';
         $this->body = '';
         $this->query = array();
+        return $this;
     }
 
     /**
@@ -334,6 +340,7 @@ class Mailings
         $this->request_type = 'DELETE';
         $this->body = '';
         $this->query = array();
+        return $this;
     }
 }
 ?>

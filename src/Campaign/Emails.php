@@ -118,6 +118,7 @@ class Emails
         if (! empty($page_size)) {
             $this->query['page_size'] = (int) $page_size;
         }
+        return $this;
     }
 
     /**
@@ -138,6 +139,7 @@ class Emails
         if (! empty($list_id)) {
             $this->query['list_id'] = (int) $list_id;
         }
+        return $this;
     }
 
     /**
@@ -153,6 +155,7 @@ class Emails
         $this->request_type = 'GET';
         $this->body = '';
         $this->query = array();
+        return $this;
     }
 
     /**
@@ -204,6 +207,7 @@ class Emails
         );
         
         $this->body = json_encode($parameters);
+        return $this;
     }
 
     /**
@@ -258,6 +262,7 @@ class Emails
         );
         
         $this->body = json_encode($parameters);
+        return $this;
     }
 
     /**
@@ -273,6 +278,7 @@ class Emails
         $this->request_type = 'PUT';
         $this->body = '';
         $this->query = array();
+        return $this;
     }
 
     /**
@@ -288,6 +294,7 @@ class Emails
         $this->request_type = 'DELETE';
         $this->body = '';
         $this->query = array();
+        return $this;
     }
 
     /**
@@ -312,6 +319,7 @@ class Emails
             'name' => $name
         );
         $this->body = json_encode($parameters);
+        return $this;
     }
 }
 ?>

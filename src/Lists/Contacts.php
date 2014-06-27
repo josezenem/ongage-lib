@@ -40,6 +40,7 @@ class Contacts
         if (! empty($sort)) {
             $this->query['sort'] = $sort;
         }
+        return $this;
     }
 
     /**
@@ -82,6 +83,7 @@ class Contacts
             );
         }
         $this->body = json_encode($parameters);
+        return $this;
     }
 
     /**
@@ -122,6 +124,7 @@ class Contacts
             );
         }
         $this->body = json_encode($parameters);
+        return $this;
     }
 
     /**
@@ -147,6 +150,7 @@ class Contacts
             );
         }
         $this->body = json_encode($parameters);
+        return $this;
     }
 
     /**
@@ -173,6 +177,7 @@ class Contacts
             'mailing_id' => $mailing_id
         );
         $this->body = json_encode($parameters);
+        return $this;
     }
 
     /**
@@ -227,6 +232,7 @@ class Contacts
         );
         
         $this->body = json_encode($parameters);
+        return $this;
     }
 }
 ?>
