@@ -66,7 +66,13 @@ class Ongage
         $request->setHeader('X_PASSWORD', self::$password);
         $request->setHeader('X_ACCOUNT_CODE', self::$account_code);
         //$request->setHeader('Content-Type', $OngageObject->contentType);
-        $response = self::$httpClient->send($request);
-        return json_decode($response->getBody());
+        try {
+            $response = self::$httpClient->send($request);
+            return json_decode($response->getBody());
+        } catch (\Exception $e) {
+            if ($e->hasResponse()) {
+                return json_decode($e->getResponse()->getBody());
+            }
+        }
     }
 }
