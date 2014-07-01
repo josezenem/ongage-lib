@@ -5,7 +5,7 @@
  * @copyright Retail Food Group Ltd
  *
  */
-namespace RfgOngage\Reports;
+namespace RfgOngage\Report;
 
 /**
  * Reports class
