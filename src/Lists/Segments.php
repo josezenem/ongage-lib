@@ -25,7 +25,7 @@ class Segments
      * @param string $list_id
      *            List Id for segments, leave empty for default list
      */
-    public function get($segment_id = null, $list_id = null)
+    public function get($segment_id = null, $list_id = null, $limit = null, $offset = null)
     {
         if (! empty($segment_id)) {
             $this->method = '/' . (int) $segment_id;
@@ -37,6 +37,12 @@ class Segments
         $this->query = array();
         if (! empty($list_id)) {
             $this->query['list_id'] = (int) $list_id;
+        }
+        if (! empty($limit)) {
+            $this->query['limit'] = (int) $limit;
+        }
+        if (! empty($offset)) {
+            $this->query['offset'] = (int) $offset;
         }
         return $this;
     }

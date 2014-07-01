@@ -61,7 +61,7 @@ class Mailings
      * @param string $list_id
      *            List Id for segments, leave empty for default list
      */
-    public function get($mailing_id = null, $list_id = null)
+    public function get($mailing_id = null, $list_id = null, $limit = null, $offset = null)
     {
         if (! empty($mailing_id)) {
             $this->method = '/' . (int) $mailing_id;
@@ -73,6 +73,12 @@ class Mailings
         $this->query = array();
         if (! empty($list_id)) {
             $this->query['list_id'] = (int) $list_id;
+        }
+        if (! empty($limit)) {
+        	$this->query['limit'] = (int) $limit;
+        }
+        if (! empty($offset)) {
+        	$this->query['offset'] = (int) $offset;
         }
         return $this;
     }
