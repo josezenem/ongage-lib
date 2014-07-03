@@ -1,7 +1,7 @@
 {
     "name": "rfg/ongage-lib",
     "type": "library",
-    "description": "This library is an implementation of the Ongage API. &copy; RFGA Management Pty Ltd, 2014",
+    "description": "This library is an implementation of the Ongage API. &copy; Retail Food Group Ltd, 2014",
     "keywords": ["ongage", "esp", "email", "edm"],
     "homepage": "https://github.com/RetailFoodGroup/ongage-lib",
     "authors": [
