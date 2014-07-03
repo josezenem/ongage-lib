@@ -1,0 +1,84 @@
+<?php
+namespace RfgOngage\Esp;
+
+class Esps
+{
+
+    public $base_endpoint = '/esps';
+
+    public $contentType = 'application/json';
+
+    public $method;
+
+    public $request_type;
+
+    public $query = array();
+
+    public $body = '';
+
+    /**
+     * Function get()
+     * Gets list fields
+     *
+     * @param string $list_id
+     *            List to look up fields in, defaults to default list
+     * @param string $name
+     *            Field Name
+     * @param string $type
+     *            Field Type - 'sending' or 'suppression'
+     * @param string $sort
+     *            Field column name
+     * @param string $order
+     *            Order of results - 'ASC' or 'DESC'
+     * @param integer $offset
+     *            Pagination offset
+     * @param integer $limit
+     *            Pagination limit
+     */
+    public function get($list_id = null, $name = null, $type = null, $sort = null, $order = null, $offset = null, $limit = null)
+    {
+        $this->method = '';
+        $this->request_type = 'GET';
+        $this->body = '';
+        $this->query = array();
+        if (! empty($list_id)) {
+            $this->query['list_id'] = $list_id;
+        }
+        if (! empty($name)) {
+            $this->query['name'] = $name;
+        }
+        if (! empty($type)) {
+            $this->query['type'] = $type;
+        }
+        if (! empty($sort)) {
+            $this->query['sort'] = $sort;
+        }
+        if (! empty($order)) {
+            $this->query['order'] = $order;
+        }
+        if (! empty($offset)) {
+            $this->query['offset'] = (int) $offset;
+        }
+        if (! empty($limit)) {
+            $this->query['limit'] = (int) $limit;
+        }
+        return $this;
+    }
+
+    /**
+     * Function getById()
+     * Gets a single field
+     *
+     * @param string $field_id
+     *            Id for list
+     */
+    public function getById($field_id)
+    {
+        $this->method = '/' . (int) $field_id;
+        $this->request_type = 'GET';
+        $this->body = '';
+        $this->query = array();
+        return $this;
+    }
+}
+?>

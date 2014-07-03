@@ -173,5 +173,21 @@ class Segments
         $this->query = array();
         return $this;
     }
+    
+    /**
+     * Function delete()
+     * Deletes segment for supplied id
+     *
+     * @param integer $segment_id
+     *            Segment ID to delete
+     */
+    public function delete($segment_id)
+    {
+    	$this->method = '/' . $segment_id;
+    	$this->request_type = 'DELETE';
+    	$this->body = '';
+    	$this->query = array();
+    	return $this;
+    }
 }
 ?>

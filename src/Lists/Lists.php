@@ -18,7 +18,7 @@ class Lists
 
     /**
      * Function get()
-     * Gets last 25 contacts
+     * Gets available Lists
      *
      * @param string $name
      *            List Name

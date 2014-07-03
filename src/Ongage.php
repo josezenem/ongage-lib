@@ -2,6 +2,8 @@
 namespace RfgOngage;
 
 use GuzzleHttp;
+use GuzzleHttp\Exception\ServerException;
+use GuzzleHttp\Exception\ClientException;
 
 class Ongage
 {
@@ -61,7 +63,6 @@ class Ongage
             'body' => $OngageObject->body,
             'query' => $OngageObject->query
         ));
-        // $request = self::$httpClient->post(self::BASE_ONGAGE_URL . $OngageObject->base_endpoint, array('X_USERNAME' => self::$username, 'X_PASSWORD' => self::$password, 'X_ACCOUNT_CODE' => self::$account_code), json_encode($OngageObject->parameters));
         $request->setHeader('X_USERNAME', self::$username);
         $request->setHeader('X_PASSWORD', self::$password);
         $request->setHeader('X_ACCOUNT_CODE', self::$account_code);
