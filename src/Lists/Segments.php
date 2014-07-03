@@ -1,4 +1,15 @@
 <?php
+/**
+ * RfgOngage Library
+ *
+ * An Ongage API library for PHP.
+ *
+ * @copyright 2014 Retail Food Group Ltd (http://www.rfg.com.au/)
+ * @license http://opensource.org/licenses/mit-license.php MIT
+ * @author Abilio Henrique <abilio.henrique@rfg.com.au>
+ * @link http://www.rfg.com.au/
+ * @see LICENSE.TXT
+ */
 namespace RfgOngage\Lists;
 
 class Segments
@@ -173,7 +184,7 @@ class Segments
         $this->query = array();
         return $this;
     }
-    
+
     /**
      * Function delete()
      * Deletes segment for supplied id
@@ -183,11 +194,11 @@ class Segments
      */
     public function delete($segment_id)
     {
-    	$this->method = '/' . $segment_id;
-    	$this->request_type = 'DELETE';
-    	$this->body = '';
-    	$this->query = array();
-    	return $this;
+        $this->method = '/' . $segment_id;
+        $this->request_type = 'DELETE';
+        $this->body = '';
+        $this->query = array();
+        return $this;
     }
 }
 ?>
