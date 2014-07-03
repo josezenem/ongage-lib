@@ -75,17 +75,17 @@ class Mailings
             $this->query['list_id'] = (int) $list_id;
         }
         if (! empty($limit)) {
-        	$this->query['limit'] = (int) $limit;
+            $this->query['limit'] = (int) $limit;
         }
         if (! empty($offset)) {
-        	$this->query['offset'] = (int) $offset;
+            $this->query['offset'] = (int) $offset;
         }
         return $this;
     }
 
     /**
      * Function post()
-     * Returns paginated emails results for a list_id (defaults to default list)
+     * Creates a new mailing campaign
      *
      * @param string $name
      *            Mailing Campaign internal name (Required)
@@ -115,6 +115,10 @@ class Mailings
      *            Mark this campaign as a test campaign
      * @param string[] $recipients
      *            Array of email addresses for test campaigns.
+     * @param boolean $pre_process
+     *            Start campaign pre-sending processing prior to launch time (approximately 1 hour before send), so that the campaign can send immediately at the scheduled date.
+     *            If set to true, once a campaign has started processing it no longer can be cancelled or modified in any way.
+     *            If set to false, the campaign starts processing it's information prior to sending, at the scheduled date.
      * @param array[] $distribution
      *            A multi dimensional array containing the ESP delivery configuration.
      *            Has the ability to deliver percentages of different emails to different ESPs.
@@ -162,7 +166,7 @@ class Mailings
      *            ];
      *            
      */
-    public function post($name, $list_id = null, $type = null, $split_type = null, $use_default_esp = true, $description, $favorite = null, $schedule_date = null, $email_message, $segments, $segments_excluded = array(), $subjects = null, $is_test = false, $recipients = null, $distribution)
+    public function post($name, $list_id = null, $type = null, $split_type = null, $use_default_esp = true, $description, $favorite = null, $schedule_date = null, $email_message, $segments, $segments_excluded = array(), $subjects = null, $is_test = false, $recipients = null, $pre_process = false, $distribution)
     {
         $this->method = '';
         $this->request_type = 'POST';
@@ -183,6 +187,7 @@ class Mailings
             'subjects' => $subjects,
             'is_test' => $is_test,
             'recipients' => $recipients,
+            'pre_process' => $pre_process,
             'distribution' => $distribution
         );
         
@@ -231,34 +236,81 @@ class Mailings
      * Function put()
      * Updates an existing mailing campaign
      *
-     * @param integer $mailing_id
-     *            Email Id To Edit
      * @param string $name
-     *            Email name (Required)
+     *            Mailing Campaign internal name (Required)
      * @param integer $list_id
-     *            List Id to look up emails in
+     *            List Id to attach this mailing to (defaults to default list)
      * @param string $type
-     *            Campaign Type - "campaign", "split"
-     * @param integer $parent_id
-     *            Id of folder in which template is located
+     *            Mailing type - "campaign" or "split".
+     * @param string $split_type
+     *            Split campaign type - "email", "segment", "esp", "subject".
+     * @param boolean $use_default_esp
+     *            Use only default ESP (Email Service Provider) from distribution
      * @param string $description
-     *            Email description (Required)
-     * @param string $subject
-     *            The subject of the email (Required)
-     * @param string $content_html
-     *            The HTML portion of the email content (Required)
-     * @param string $content_text
-     *            The Plain-text portion of the email content (Required)
+     *            Campaign description for internal use (Required)
      * @param boolean $favorite
-     *            Whether to mark the email as favourite
-     * @param boolean $no_wysiwyg
-     *            Enable/Disable WYSIWYG Editor for email
-     * @param string $language_iso
-     *            The 2-letter language ISO code for the email ({@link http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes Wikipedia Language ISO code list})
-     * @param array $addresses
-     *            An array containing information about the send/from and reply-to addresses for this email
+     *            Return emails marked as favourite
+     * @param integer $schedule_date
+     *            Delivery date & time as Unix Timestamp
+     * @param integer[] $email_message
+     *            An array of integers containing the email ids to be sent with this campaign
+     * @param integer[] $segments
+     *            An array of integers containing the segments ids this campaign will be sent to
+     * @param integer[] $segments_excluded
+     *            An array of segment ids to exclude from this campaign
+     * @param string[] $subjects
+     *            An array of strings containing subjects to test the campaign. Required for "subject" split_type.
+     * @param boolean $pre_process
+     *            Start campaign pre-sending processing prior to launch time (approximately 1 hour before send), so that the campaign can send immediately at the scheduled date.
+     *            If set to true, once a campaign has started processing it no longer can be cancelled or modified in any way.
+     *            If set to false, the campaign starts processing it's information prior to sending, at the scheduled date.
+     * @param array[] $distribution
+     *            A multi dimensional array containing the ESP delivery configuration.
+     *            Has the ability to deliver percentages of different emails to different ESPs.
+     *            Examples:
+     *            
+     *            Regular campaign request:
+     *            
+     *            $distribution = [
+     *            [
+     *            "domain" => "default",
+     *            "esp_id" => 5
+     *            ],
+     *            [
+     *            "domain" => "gmail.com",
+     *            "esp_id" => 6
+     *            ],
+     *            [
+     *            "domain" => "hotmail.com",
+     *            "esps" => [
+     *            "5" => 20, // 20% of hotmail.com emails will be sent via ESP Id 5
+     *            "6" => 80 // 80% of hotmail.com emails will be sent via ESP Id 6
+     *            ]
+     *            ];
+     *            
+     *            Split campaign request:
+     *            
+     *            $distribution = [
+     *            [
+     *            "isp_id" => 0
+     *            "domain" => "default",
+     *            "esp_id" => 5
+     *            ],
+     *            [
+     *            "isp_id" => 1
+     *            "domain" => "gmail.com",
+     *            "esp_id" => 6
+     *            ],
+     *            [
+     *            "isp_id" => 1
+     *            "domain" => "hotmail.com",
+     *            "esps" => [
+     *            "5" => 20, // 20% of hotmail.com emails will be sent via ESP Id 5
+     *            "6" => 80 // 80% of hotmail.com emails will be sent via ESP Id 6
+     *            ]
+     *            ];
      */
-    public function put($mailing_id, $name = null, $description = null, $type = null, $split_type = null, $use_default_esp = null, $favorite = null, $schedule_date = null, $subjects = null, $segments = null, $distribution = null)
+    public function put($mailing_id, $name = null, $description = null, $type = null, $split_type = null, $use_default_esp = null, $favorite = null, $schedule_date = null, $subjects = null, $segments = null, $pre_process = false, $distribution = null)
     {
         $this->method = '/' . (int) $mailing_id;
         $this->request_type = 'PUT';
@@ -294,6 +346,9 @@ class Mailings
         if (! empty($segments)) {
             $parameters['segments'] = $segments;
         }
+        if (! empty($pre_process)) {
+        	$parameters['pre_process'] = $pre_process;
+        }
         if (! empty($distribution)) {
             $parameters['distribution'] = $distribution;
         }
@@ -307,8 +362,15 @@ class Mailings
      *
      * @param integer $mailing_id
      *            Mailing campaign id to toggle
+     * @param string $action
+     *            Action to set when toggling the campaign status.
+     *            Valid Parameters:
+     *            - "hold" (default)
+     *            - "abort"
+     *            - "resume"
+     *            Note: Can only set "abort" if campaign is already on "hold"
      */
-    public function abort($mailing_id)
+    public function abort($mailing_id, $action = 'hold')
     {
         $this->method = '/' . (int) $mailing_id . '/abort';
         $this->request_type = 'PUT';
