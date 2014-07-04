@@ -23,14 +23,14 @@ Currently implemented endpoints:
 * /api/esp_connections
 * /api/esps
 
- **"Lists"** Package
- * /api/contacts
- * /api/lists/
- * /api/segments
- * /api/list_fields *(Unsupported, Undocumented by Ongage)*
- 
- **"Reports"** Package
- * /api/reports
+**"Lists"** Package
+* /api/contacts
+* /api/lists/
+* /api/segments
+* /api/list_fields *(Unsupported, Undocumented by Ongage)*
+
+**"Reports"** Package
+* /api/reports
  
 ### Installation ###
 
