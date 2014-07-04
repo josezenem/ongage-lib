@@ -37,30 +37,37 @@ Currently implemented endpoints:
 #### Via Composer ####
 Install composer in your project:
 
+```bash
     curl -s https://getcomposer.org/installer | php
+```
 
 Create a composer.json file in your project root:
 
+```javascript
     {
         "require": {
             "rfg/ongage-lib": "0.1*"
         }
     }
+```
 
 Install via composer:
 
+```bash
     php composer.phar install
+```
 
 Add this line to your application’s index.php file:
 
+```php
     <?php
 	    require 'vendor/autoload.php';
     ?>
-
+```
 
 ### Usage ###
 
-
+```php
     <?php
 	    $list_id = ''; // Set your List ID here
 	    // Instantiate Ongage Object
@@ -78,3 +85,4 @@ Add this line to your application’s index.php file:
 	    // Echo raw results
 	    print_r($results);
     ?>
+```
