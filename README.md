@@ -1,6 +1,6 @@
 RFG Ongage API Library For PHP
 ======================
-[![Latest Stable Version](http://img.shields.io/packagist/v/rfg/ongage-lib.svg)](https://packagist.org/packages/rfg/ongage-lib) [![MIT License](http://img.shields.io/packagist/l/rfg/ongage-lib.svg)](http://opensource.org/licenses/mit-license.php)
+[![Latest Stable Version](http://img.shields.io/badge/packagist-v0.1-blue.svg)](https://packagist.org/packages/rfg/ongage-lib) [![MIT License](http://img.shields.io/packagist/l/rfg/ongage-lib.svg)](http://opensource.org/licenses/mit-license.php)
 
 © 2014 Retail Food Group Ltd
 
