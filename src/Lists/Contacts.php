@@ -42,13 +42,13 @@ class Contacts
         $this->body = '';
         $this->query = array();
         
-        if (! empty($list_id)) {
+        if (isset($list_id)) {
             $this->query['list_id'] = (int) $list_id;
         }
-        if (! empty($user_type)) {
+        if (isset($user_type)) {
             $this->query['user_type'] = $user_type;
         }
-        if (! empty($sort)) {
+        if (isset($sort)) {
             $this->query['sort'] = $sort;
         }
         return $this;

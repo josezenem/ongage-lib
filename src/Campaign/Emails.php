@@ -90,37 +90,37 @@ class Emails
         $this->request_type = 'GET';
         $this->body = '';
         $this->query = array();
-        if (! empty($list_id)) {
+        if (isset($list_id)) {
             $this->query['list_id'] = $list_id;
         }
-        if (! empty($name)) {
+        if (isset($name)) {
             $this->query['name'] = $name;
         }
-        if (! empty($type)) {
+        if (isset($type)) {
             $this->query['type'] = $type;
         }
-        if (! empty($parent_id)) {
+        if (isset($parent_id)) {
             $this->query['parent_id'] = $parent_id;
         }
-        if (! empty($subject)) {
+        if (isset($subject)) {
             $this->query['subject'] = $subject;
         }
-        if (! empty($modified_from)) {
+        if (isset($modified_from)) {
             $this->query['modified_from'] = $modified_from;
         }
-        if (! empty($modified_to)) {
+        if (isset($modified_to)) {
             $this->query['modified_to'] = $modified_to;
         }
-        if (! empty($created_by)) {
+        if (isset($created_by)) {
             $this->query['created_by'] = $created_by;
         }
-        if (! empty($favorite)) {
+        if (isset($favorite)) {
             $this->query['favorite'] = (int) $favorite;
         }
-        if (! empty($page)) {
+        if (isset($page)) {
             $this->query['page'] = (int) $page;
         }
-        if (! empty($page_size)) {
+        if (isset($page_size)) {
             $this->query['page_size'] = (int) $page_size;
         }
         return $this;
@@ -141,7 +141,7 @@ class Emails
         $this->request_type = 'GET';
         $this->body = '';
         $this->query = array();
-        if (! empty($list_id)) {
+        if (isset($list_id)) {
             $this->query['list_id'] = (int) $list_id;
         }
         return $this;

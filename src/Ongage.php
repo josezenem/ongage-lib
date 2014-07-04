@@ -81,6 +81,9 @@ class Ongage
      */
     public function send($OngageObject)
     {
+        var_dump($OngageObject->body);
+        exit;
+        
         $request = self::$httpClient->createRequest($OngageObject->request_type, self::BASE_ONGAGE_URL . $OngageObject->base_endpoint . $OngageObject->method, array(
             'body' => $OngageObject->body,
             'query' => $OngageObject->query

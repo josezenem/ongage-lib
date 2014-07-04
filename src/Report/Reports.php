@@ -112,34 +112,34 @@ class Reports
         $this->query = array();
         $parameters = array();
         
-        if (! empty($list_id)) {
+        if (isset($list_id)) {
             $parameters['list_id'] = $list_id;
         }
-        if (! empty($select)) {
+        if (isset($select)) {
             $parameters['select'] = $select;
         }
-        if (! empty($from)) {
+        if (isset($from)) {
             $parameters['from'] = $from;
         }
-        if (! empty($group)) {
+        if (isset($group)) {
             $parameters['group'] = $group;
         }
-        if (! empty($order)) {
+        if (isset($order)) {
             $parameters['order'] = $order;
         }
-        if (! empty($filter)) {
+        if (isset($filter)) {
             $parameters['filter'] = $filter;
         }
-        if (! empty($value)) {
+        if (isset($value)) {
             $parameters['value'] = $value;
         }
-        if (! empty($offset)) {
+        if (isset($offset)) {
             $parameters['offset'] = $offset;
         }
-        if (! empty($limit)) {
+        if (isset($limit)) {
             $parameters['limit'] = $limit;
         }
-        if (! empty($format)) {
+        if (isset($format)) {
             $parameters['format'] = $format;
         }
         $this->body = json_encode($parameters);

@@ -50,22 +50,22 @@ class Lists
         $this->request_type = 'GET';
         $this->body = '';
         $this->query = array();
-        if (! empty($name)) {
+        if (isset($name)) {
             $this->query['name'] = $name;
         }
-        if (! empty($type)) {
+        if (isset($type)) {
             $this->query['type'] = $type;
         }
-        if (! empty($sort)) {
+        if (isset($sort)) {
             $this->query['sort'] = $sort;
         }
-        if (! empty($order)) {
+        if (isset($order)) {
             $this->query['order'] = $order;
         }
-        if (! empty($offset)) {
+        if (isset($offset)) {
             $this->query['offset'] = (int) $offset;
         }
-        if (! empty($limit)) {
+        if (isset($limit)) {
             $this->query['limit'] = (int) $limit;
         }
         return $this;

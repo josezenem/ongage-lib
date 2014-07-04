@@ -52,25 +52,25 @@ class ListFields
         $this->request_type = 'GET';
         $this->body = '';
         $this->query = array();
-        if (! empty($list_id)) {
+        if (isset($list_id)) {
             $this->query['list_id'] = $list_id;
         }
-        if (! empty($name)) {
+        if (isset($name)) {
             $this->query['name'] = $name;
         }
-        if (! empty($type)) {
+        if (isset($type)) {
             $this->query['type'] = $type;
         }
-        if (! empty($sort)) {
+        if (isset($sort)) {
             $this->query['sort'] = $sort;
         }
-        if (! empty($order)) {
+        if (isset($order)) {
             $this->query['order'] = $order;
         }
-        if (! empty($offset)) {
+        if (isset($offset)) {
             $this->query['offset'] = (int) $offset;
         }
-        if (! empty($limit)) {
+        if (isset($limit)) {
             $this->query['limit'] = (int) $limit;
         }
         return $this;
@@ -203,22 +203,22 @@ class ListFields
         
         $parameters = array();
         
-        if (! empty($name)) {
+        if (isset($name)) {
             $parameters['name'] = $name;
         }
-        if (! empty($title)) {
+        if (isset($title)) {
             $parameters['title'] = $title;
         }
-        if (! empty($format)) {
+        if (isset($format)) {
             $parameters['format'] = $format;
         }
-        if (! empty($default)) {
+        if (isset($default)) {
             $parameters['default'] = $default;
         }
-        if (! empty($position)) {
+        if (isset($position)) {
             $parameters['position'] = $position;
         }
-        if (! empty($mandatory)) {
+        if (isset($mandatory)) {
             $parameters['mandatory'] = $mandatory;
         }
         $this->body = json_encode($parameters);

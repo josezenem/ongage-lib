@@ -42,10 +42,10 @@ class AccountAddresses
         $this->request_type = 'GET';
         $this->body = '';
         $this->query = array();
-        if (! empty($esp_connection_id)) {
+        if (isset($esp_connection_id)) {
             $this->query['esp_connection_id'] = $esp_connection_id;
         }
-        if (! empty($list_id)) {
+        if (isset($list_id)) {
             $this->query['list_id'] = $list_id;
         }
         return $this;
@@ -66,7 +66,7 @@ class AccountAddresses
         $this->request_type = 'GET';
         $this->body = '';
         $this->query = array();
-        if (! empty($list_id)) {
+        if (isset($list_id)) {
             $this->query['list_id'] = $list_id;
         }
         return $this;
@@ -97,7 +97,7 @@ class AccountAddresses
         $parameters = array();
         $parameters['esp_connection_id'] = $esp_connection_id;
         
-        if (! empty($list_id)) {
+        if (isset($list_id)) {
             $this->parameters['list_id'] = $list_id;
         }
         
@@ -130,13 +130,13 @@ class AccountAddresses
         $this->query = array();
         
         $parameters = array();
-        if (! empty($type)) {
+        if (isset($type)) {
             $parameters['type'] = $type;
         }
-        if (! empty($value)) {
+        if (isset($value)) {
             $parameters['value'] = $value;
         }
-        if (! empty($default)) {
+        if (isset($default)) {
             $parameters['default'] = $default;
         }
         
@@ -157,7 +157,7 @@ class AccountAddresses
         $this->request_type = 'POST';
         $this->body = '';
         $this->query = array();
-        if (! empty($address_ids)) {
+        if (isset($address_ids)) {
             $parameters['address_ids'] = $address_ids;
         }
         return $this;

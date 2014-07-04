@@ -68,7 +68,7 @@ class Mailings
      */
     public function get($mailing_id = null, $list_id = null, $limit = null, $offset = null)
     {
-        if (! empty($mailing_id)) {
+        if (isset($mailing_id)) {
             $this->method = '/' . (int) $mailing_id;
         } else {
             $this->method = '';
@@ -76,13 +76,13 @@ class Mailings
         $this->request_type = 'GET';
         $this->body = '';
         $this->query = array();
-        if (! empty($list_id)) {
+        if (isset($list_id)) {
             $this->query['list_id'] = (int) $list_id;
         }
-        if (! empty($limit)) {
+        if (isset($limit)) {
             $this->query['limit'] = (int) $limit;
         }
-        if (! empty($offset)) {
+        if (isset($offset)) {
             $this->query['offset'] = (int) $offset;
         }
         return $this;
@@ -221,16 +221,16 @@ class Mailings
         $this->query = array();
         
         $parameters = array();
-        if (! empty($name)) {
+        if (isset($name)) {
             $parameters['name'] = $name;
         }
-        if (! empty($description)) {
+        if (isset($description)) {
             $parameters['description'] = $description;
         }
-        if (! empty($list_id)) {
+        if (isset($list_id)) {
             $parameters['list_id'] = $list_id;
         }
-        if (! empty($favorite)) {
+        if (isset($favorite)) {
             $parameters['favorite'] = (int) $favorite;
         }
         $this->body = json_encode($parameters);
@@ -324,37 +324,37 @@ class Mailings
         
         $parameters = array();
         
-        if (! empty($name)) {
+        if (isset($name)) {
             $parameters['name'] = $name;
         }
-        if (! empty($description)) {
+        if (isset($description)) {
             $parameters['description'] = $description;
         }
-        if (! empty($type)) {
+        if (isset($type)) {
             $parameters['type'] = $type;
         }
-        if (! empty($split_type)) {
+        if (isset($split_type)) {
             $parameters['split_type'] = $split_type;
         }
-        if (! empty($use_default_esp)) {
+        if (isset($use_default_esp)) {
             $parameters['use_default_esp'] = $use_default_esp;
         }
-        if (! empty($favorite)) {
+        if (isset($favorite)) {
             $parameters['favorite'] = $favorite;
         }
-        if (! empty($schedule_date)) {
+        if (isset($schedule_date)) {
             $parameters['schedule_date'] = $schedule_date;
         }
-        if (! empty($subjects)) {
+        if (isset($subjects)) {
             $parameters['subjects'] = $subjects;
         }
-        if (! empty($segments)) {
+        if (isset($segments)) {
             $parameters['segments'] = $segments;
         }
-        if (! empty($pre_process)) {
+        if (isset($pre_process)) {
             $parameters['pre_process'] = $pre_process;
         }
-        if (! empty($distribution)) {
+        if (isset($distribution)) {
             $parameters['distribution'] = $distribution;
         }
         $this->body = json_encode($parameters);

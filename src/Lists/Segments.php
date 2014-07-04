@@ -38,7 +38,7 @@ class Segments
      */
     public function get($segment_id = null, $list_id = null, $limit = null, $offset = null)
     {
-        if (! empty($segment_id)) {
+        if (isset($segment_id)) {
             $this->method = '/' . (int) $segment_id;
         } else {
             $this->method = '';
@@ -46,13 +46,13 @@ class Segments
         $this->request_type = 'GET';
         $this->body = '';
         $this->query = array();
-        if (! empty($list_id)) {
+        if (isset($list_id)) {
             $this->query['list_id'] = (int) $list_id;
         }
-        if (! empty($limit)) {
+        if (isset($limit)) {
             $this->query['limit'] = (int) $limit;
         }
-        if (! empty($offset)) {
+        if (isset($offset)) {
             $this->query['offset'] = (int) $offset;
         }
         return $this;
