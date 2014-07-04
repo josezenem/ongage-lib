@@ -57,7 +57,7 @@ Install via composer:
     php composer.phar install
 ```
 
-Add this line to your application’s index.php file:
+Add this line to your application’s code:
 
 ```php
     <?php
