@@ -343,7 +343,7 @@ class Emails
      */
     public function move($email_id, $parent_id, $name)
     {
-        $this->method = '/' . (int) $email_id . '/favorite';
+        $this->method = '/' . (int) $email_id;
         $this->request_type = 'PUT';
         $this->body = '';
         $this->query = array();
