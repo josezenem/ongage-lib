@@ -190,7 +190,7 @@ class Emails
      * @param string $language_iso
      *            The 2-letter language ISO code for the email ({@link http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes Wikipedia Language ISO code list})
      */
-    public function post($name, $list_id = null, $type = 'email_message', $parent_id = null, $description, $subject, $content_html, $content_text, $favorite = null, $no_wysiwyg = false, $language_iso = 'en')
+    public function post($name, $list_id = null, $type = 'email_message', $parent_id = null, $description, $subject, $content_html, $content_text, $favorite = null, $no_wysiwyg = false, $language_iso = 'en', $addresses = array())
     {
         $this->method = '';
         $this->request_type = 'POST';
@@ -210,6 +210,12 @@ class Emails
             'no_wysiwyg' => $no_wysiwyg,
             'language_iso' => $language_iso
         );
+        
+        if (isset($addresses)) {
+            $parameters['addresses'] = $addresses;
+        } else {
+            $parameters['addresses'] = array();
+        }
         
         $this->body = json_encode($parameters);
         return $this;
@@ -246,25 +252,47 @@ class Emails
      * @param array $addresses
      *            An array containing information about the send/from and reply-to addresses for this email
      */
-    public function put($email_id, $name, $type = 'email_message', $parent_id = null, $description, $subject, $content_html, $content_text, $favorite = null, $language_iso = 'en', $addresses)
+    public function put($email_id, $list_id, $name, $type = 'email_message', $parent_id = null, $description, $subject, $content_html, $content_text, $favorite = null, $language_iso = 'en', $addresses = array())
     {
         $this->method = '/' . (int) $email_id;
         $this->request_type = 'PUT';
         $this->body = '';
         $this->query = array();
+        $parameters = array();
         
-        $parameters = array(
-            'type' => $type,
-            'parent_id' => $parent_id,
-            'name' => $name,
-            'description' => $description,
-            'subject' => $description,
-            'content_html' => $content_html,
-            'content_text' => $content_text,
-            'favorite' => $favorite,
-            'language_iso' => $language_iso,
-            'addresses' => $addresses
-        );
+        if (isset($list_id)) {
+            $parameters['list_id'] = $list_id;
+        }
+        if (isset($name)) {
+            $parameters['name'] = $name;
+        }
+        if (isset($description)) {
+            $parameters['description'] = $description;
+        }
+        if (isset($type)) {
+            $parameters['type'] = $type;
+        }
+        if (isset($parent_id)) {
+            $parameters['parent_id'] = $parent_id;
+        }
+        if (isset($subject)) {
+            $parameters['subject'] = $subject;
+        }
+        if (isset($favorite)) {
+            $parameters['favorite'] = $favorite;
+        }
+        if (isset($content_html)) {
+            $parameters['content_html'] = $content_html;
+        }
+        if (isset($content_text)) {
+            $parameters['content_text'] = $content_text;
+        }
+        if (isset($language_iso)) {
+            $parameters['language_iso'] = $language_iso;
+        }
+        if (isset($addresses)) {
+            $parameters['addresses'] = $addresses;
+        }
         
         $this->body = json_encode($parameters);
         return $this;
