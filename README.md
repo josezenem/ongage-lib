@@ -60,7 +60,7 @@ Add this line to your application’s code:
 
 ```php
     <?php
-	    require 'vendor/autoload.php';
+        require 'vendor/autoload.php';
     ?>
 ```
 
@@ -68,20 +68,20 @@ Add this line to your application’s code:
 
 ```php
     <?php
-	    $list_id = ''; // Set your List ID here
-	    // Instantiate Ongage Object
-	    $ongage = new RfgOngage\Ongage('username', 'password', 'account_code');
+        $list_id = ''; // Set your List ID here
+        // Instantiate Ongage Object
+        $ongage = new RfgOngage\Ongage('username', 'password', 'account_code');
 
-		// Instantiate Contacts Object
-	    $contacts = new RfgOngage\Lists\Contacts();
-	    
-	    // Get Contacts for a list
-	    $contacts->get($list_id);
-	    
-	    // Send Request
-	    $results = $ongage->send($contacts);
-	    
-	    // Echo raw results
-	    print_r($results);
+        // Instantiate Contacts Object
+        $contacts = new RfgOngage\Lists\Contacts();
+        
+        // Get Contacts for a list
+        $contacts->get($list_id);
+        
+        // Send Request
+        $results = $ongage->send($contacts);
+        
+        // Echo raw results
+        print_r($results);
     ?>
 ```
