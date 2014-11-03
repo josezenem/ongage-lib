@@ -185,7 +185,7 @@ class Mailings
             'use_default_esp' => $use_default_esp,
             'description' => $description,
             'favorite' => $favorite,
-            // 'schedule_date' => $schedule_date,
+            'schedule_date' => $schedule_date,
             'email_message' => $email_message,
             'segments' => $segments,
             'segments_excluded' => $segments_excluded,
