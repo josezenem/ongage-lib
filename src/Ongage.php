@@ -13,8 +13,6 @@
 namespace RfgOngage;
 
 use GuzzleHttp;
-use GuzzleHttp\Exception\ServerException;
-use GuzzleHttp\Exception\ClientException;
 
 /**
  * Main class for making calls to the Ongage API
@@ -62,9 +60,9 @@ class Ongage
     {
         // Instatiate GuzzleHttp Client
         self::$httpClient = new GuzzleHttp\Client([
-            'base_url' => self::BASE_ONGAGE_URL
+            'base_uri' => self::BASE_ONGAGE_URL
         ]);
-        
+
         // Set Authentication Variables
         self::$username = $username;
         self::$password = $password;
@@ -81,20 +79,22 @@ class Ongage
      */
     public function send($OngageObject)
     {
-        $request = self::$httpClient->createRequest($OngageObject->request_type, self::BASE_ONGAGE_URL . $OngageObject->base_endpoint . $OngageObject->method, array(
-            'body' => $OngageObject->body,
-            'query' => $OngageObject->query
-        ));
-        $request->setHeader('X_USERNAME', self::$username);
-        $request->setHeader('X_PASSWORD', self::$password);
-        $request->setHeader('X_ACCOUNT_CODE', self::$account_code);
-        // $request->setHeader('Content-Type', $OngageObject->contentType);
+        $headers = [
+            'X_USERNAME' => self::$username,
+            'X_PASSWORD' => self::$password,
+            'X_ACCOUNT_CODE' => self::$account_code
+        ];
+        $request = new GuzzleHttp\Psr7\Request($OngageObject->request_type, self::BASE_ONGAGE_URL . $OngageObject->base_endpoint . $OngageObject->method, $headers, $OngageObject->body);
         try {
-            $response = self::$httpClient->send($request);
+            $response = self::$httpClient->send($request, [
+                'query' => $OngageObject->query
+            ]);
             return json_decode($response->getBody());
-        } catch (\Exception $e) {
+        } catch (GuzzleHttp\Exception\RequestException $e) {
             if ($e->hasResponse()) {
                 return json_decode($e->getResponse()->getBody());
+            } else {
+                return $e->getMessage();
             }
         }
     }
