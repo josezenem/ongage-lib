@@ -45,7 +45,7 @@ Create a composer.json file in your project root:
 ```javascript
     {
         "require": {
-            "rfg/ongage-lib": "0.1*"
+            "rfg/ongage-lib": "0.1.*"
         }
     }
 ```
